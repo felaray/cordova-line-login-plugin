@@ -43,67 +43,23 @@ Android Scheme : com.example.sample://
 
 ## Example
 
-ionicでの使用例
-```js
-angular.module('starter', ['ionic'])
-  .run(function($ionicPlatform) {
-    ・・・
 
-    // initialize
-    lineLogin.initialize({channel_id: "your_chanel_id"});
-  })
-  .controller("LineCtrl", function($scope) {
-    $scope.onLineLogin = function() {
-      // login...
-      lineLogin.login({},
-        function(result) {
-          console.log(result); // {userID:12345, displayName:'user name', pictureURL:'thumbnail url'}
-        }, function(error) {
-          console.log(error);
-        });
+
+Cordova Example
+
+deviceReady: function () {
+        this.receivedEvent('deviceready');
+        lineLogin.initialize({ channel_id: "xxxxxxx" });
+        lineLogin.login({},
+            function (result) {
+                console.log(result);
+                alert("Welcome "+result.displayName);
+                // {userID:12345, displayName:'user name', pictureURL:'thumbnail url'}
+            }, function (error) {
+                //-1
+                console.log(error);
+            });
     }
 
-    $scope.onLineLogout = function() {
-      // logout...
-      lineLogin.logout(
-        function(result) {
-          console.log(result);
-        }, function(error) {
-          console.log(error);
-        });
-    }
 
-    $scope.onLineGetAccessToken = function() {
-      // get access token
-      lineLogin.getAccessToken(
-        function(result) {
-          // success
-          console.log(result); // {accessToken:'xxxxxxxx', expireTime: 123456789}
-        }, function() {
-          // failed
-        });
-    }
-
-    $scope.onLineVerifyAccessToken = function() {
-      // verify current access token
-      lineLogin.verifyAccessToken(
-        function() {
-          // success
-        }, function() {
-          // failed
-        });
-    }
-
-    $scope.onLineRefreshAccessToken = function() {
-      // refresh access token
-      lineLogin.verifyAccessToken(
-        function(accessToken) {
-          // success
-        }, function() {
-          // failed
-        });
-    }
-
-  });
-```
 

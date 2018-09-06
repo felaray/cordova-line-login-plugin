@@ -46,7 +46,7 @@ Android Scheme : com.example.sample://
 
 
 Cordova Example
-
+```
 deviceReady: function () {
         this.receivedEvent('deviceready');
         lineLogin.initialize({ channel_id: "xxxxxxx" });
@@ -60,6 +60,6 @@ deviceReady: function () {
                 console.log(error);
             });
     }
-
+```
 
 
